@@ -28,7 +28,7 @@ export function Bloomberg() {
           </Text>
         </Flex>
         <Flex>
-          <Button ref={prevButton}>
+          <Button ref={prevButton} arial-label="next-bloomberg-card">
             <Image
               src="/icons/arrow-left.svg"
               alt="arrow navigation"
@@ -36,7 +36,11 @@ export function Bloomberg() {
               height={12}
             />
           </Button>
-          <Button transform={'rotate(180deg)'} ref={nextButton}>
+          <Button
+            transform={'rotate(180deg)'}
+            arial-label="prev-bloomberg-card"
+            ref={nextButton}
+          >
             <Image
               src="/icons/arrow-left.svg"
               alt="arrow navigation"

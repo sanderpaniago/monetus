@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { Bloomberg } from '../components/Bloomberg'
 
 import { Container } from '../components/Container'
@@ -11,6 +12,9 @@ import { TitlePage } from '../components/TitlePage'
 const Home: NextPage = () => {
   return (
     <Box w="100vw" height="100vh" d="flex">
+      <Head>
+        <title>Monetus | Dashboard</title>
+      </Head>
       <Sidebar />
 
       <Container d="flex" flex={1}>

@@ -27,7 +27,7 @@ export function Wishlist() {
             variant="shadow"
           />
 
-          <Box as="button" ml={2}>
+          <Box as="button" aria-label="delete-item-wishlist" ml={2}>
             <Image src="/icons/delete.svg" alt="" width={24} height={24} />
           </Box>
         </Box>
@@ -41,7 +41,7 @@ export function Wishlist() {
             variant="shadow"
           />
 
-          <Box as="button" ml={2}>
+          <Box as="button" aria-label="delete-item-wishlist" ml={2}>
             <Image src="/icons/delete.svg" alt="" width={24} height={24} />
           </Box>
         </Box>

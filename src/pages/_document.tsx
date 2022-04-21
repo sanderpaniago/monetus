@@ -14,7 +14,7 @@ class DocumentConfig extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="pt-BR">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
@@ -27,6 +27,8 @@ class DocumentConfig extends Document {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/logo.svg" type="image/svg" />
+
+          <meta name="description" content="Monetus Dashboard Stocks" />
         </Head>
         <body>
           <Main />

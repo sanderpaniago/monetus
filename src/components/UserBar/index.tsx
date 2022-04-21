@@ -22,7 +22,7 @@ export function UserBar() {
         Sander Pereira Paniago
       </Text>
 
-      <Box as="button" height="16px" w={8}>
+      <Box as="button" aria-label="profile-button" height="16px" w={8}>
         <Image src="/icons/chevron-down.svg" alt="" width={16} height={16} />
       </Box>
     </Box>

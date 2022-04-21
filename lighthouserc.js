@@ -1,7 +1,9 @@
+const { lighthouse: lh } = require('./config')
+
 module.exports = {
   ci: {
     collect: {
-      url: ['/'],
+      url: [lh.server],
       startServerCommand: 'yarn serve'
     },
     assert: {
