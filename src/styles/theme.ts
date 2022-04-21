@@ -11,6 +11,9 @@ const theme = extendTheme({
       100: '#F5F8FA',
       600: '#657786'
     }
+  },
+  shadows: {
+    custom: '0px 4px 12px rgba(222, 222, 231, 0.4)'
   }
 })
 
