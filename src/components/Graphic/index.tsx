@@ -1,4 +1,4 @@
-import { Box, Text, theme } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { ButtonWishList } from '../BUttonWishList'
@@ -7,7 +7,7 @@ const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false
 })
 
-export function Graphic() {
+export default function Graphic() {
   return (
     <Box
       px={6}

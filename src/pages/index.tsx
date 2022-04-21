@@ -1,13 +1,16 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { Bloomberg } from '../components/Bloomberg'
 
 import { Container } from '../components/Container'
-import { Graphic } from '../components/Graphic'
+import { SearchStock } from '../components/SearchStock'
 import { Sidebar } from '../components/Sidebar'
-import { SideOver } from '../components/SideOver'
 import { TitlePage } from '../components/TitlePage'
+
+const Graphic = dynamic(() => import('../components/Graphic'))
+const SideOver = dynamic(() => import('../components/SideOver'))
 
 const Home: NextPage = () => {
   return (
@@ -24,10 +27,13 @@ const Home: NextPage = () => {
           iconLabel="dashboard icon four square"
         />
 
+        <SearchStock />
+
         <Graphic />
 
         <Bloomberg />
       </Container>
+
       <SideOver />
     </Box>
   )
