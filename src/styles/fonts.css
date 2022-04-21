@@ -1,0 +1,43 @@
+/* Graphik - 400 */
+@font-face {
+  font-family: "Graphik";
+  font-weight: 400;
+  font-display: fallback;
+  font-style: normal;
+  src: local(""),
+    url('../fonts/GraphikRegular.otf') format("opentype"),
+    url('../fonts/GraphikRegular.woff') format("woff"),
+}
+
+/* Graphik - 500 */
+@font-face {
+  font-family: "Graphik";
+  font-weight: 500;
+  font-display: fallback;
+  font-style: normal;
+  src: local(""),
+    url('../fonts/GraphikMedium.otf') format("opentype"),
+    url('../fonts/GraphikMedium.woff') format("woff"),
+}
+
+/* Graphik - 600 */
+@font-face {
+  font-family: "Graphik";
+  font-weight: 600;
+  font-display: fallback;
+  font-style: normal;
+  src: local(""),
+    url('../fonts/GraphikSemibold.otf') format("opentype"),
+    url('../fonts/GraphikSemibold.woff') format("woff"),
+}
+
+/* Graphik - 700 */
+@font-face {
+  font-family: "Graphik";
+  font-weight: 700;
+  font-display: fallback;
+  font-style: normal;
+  src: local(""),
+    url('../fonts/GraphikBold.otf') format("opentype"),
+    url('../fonts/GraphikBold.woff') format("woff"),
+}
