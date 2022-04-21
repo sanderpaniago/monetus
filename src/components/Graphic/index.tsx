@@ -14,7 +14,6 @@ export function Graphic() {
       py={7}
       pb={0}
       background="white"
-      maxW="748px"
       borderRadius="md"
       mt={8}
       boxShadow="custom"
@@ -53,7 +52,6 @@ export function Graphic() {
       <Chart
         type="area"
         height={300}
-        width={720}
         options={{
           chart: {
             toolbar: {

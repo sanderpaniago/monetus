@@ -7,6 +7,7 @@ type Props = {
   symbol: string
   companyName: string
   changePercent: number
+  variant?: 'primary' | 'shadow'
 }
 
 export function CardStock({
@@ -14,7 +15,8 @@ export function CardStock({
   icon,
   symbol,
   btnWishList,
-  changePercent
+  changePercent,
+  variant = 'primary'
 }: Props) {
   return (
     <Flex
@@ -27,6 +29,7 @@ export function CardStock({
       maxW="300px"
       w="full"
       cursor="pointer"
+      boxShadow={variant === 'shadow' ? 'card' : 'none'}
     >
       <Flex align="center" gap={2}>
         {btnWishList && btnWishList}
