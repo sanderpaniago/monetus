@@ -9,8 +9,17 @@ const Chart = dynamic(() => import('react-apexcharts'), {
 
 export function Graphic() {
   return (
-    <Box px={6} py={7} background="white" maxW="750px">
-      <Box d="flex" alignItems="center" justifyContent="space-between">
+    <Box
+      px={6}
+      py={7}
+      pb={0}
+      background="white"
+      maxW="748px"
+      borderRadius="md"
+      mt={8}
+      boxShadow="custom"
+    >
+      <Box d="flex" alignItems="center" justifyContent="space-between" mb={2}>
         <Box d="flex" alignItems="center">
           <ButtonWishList />
           <Box ml="3">
@@ -21,7 +30,7 @@ export function Graphic() {
           </Box>
         </Box>
         <Box>
-          <Text fontWeight={600}>
+          <Text fontWeight={600} textAlign="right">
             <Image
               src="/icons/graph-down.svg"
               alt="stock down graph"
@@ -30,13 +39,21 @@ export function Graphic() {
             />{' '}
             $265,42
           </Text>
-          <Text>$-0.09 (-0.03%)</Text>
+          <Text
+            color="red.500"
+            fontWeight={600}
+            fontSize="sm"
+            textAlign="right"
+          >
+            $-0.09 (-0.03%)
+          </Text>
         </Box>
       </Box>
+
       <Chart
         type="area"
         height={300}
-        width={700}
+        width={720}
         options={{
           chart: {
             toolbar: {
@@ -48,7 +65,7 @@ export function Graphic() {
             foreColor: '#657786'
           },
           grid: {
-            show: false
+            show: true
           },
           dataLabels: {
             enabled: false
