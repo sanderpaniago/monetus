@@ -1,13 +1,25 @@
 import { Box, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import { useChartStock } from '../../hooks/useChartStock'
+import { useStockBySymbol } from '../../hooks/useStockBySymbol'
+import { formatterPrice } from '../../utils/formatter'
 import { ButtonWishList } from '../BUttonWishList'
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false
 })
 
-export default function Graphic() {
+type Props = {
+  stock: string
+}
+
+export default function Graphic({ stock }: Props) {
+  const { data } = useChartStock(stock)
+  const { data: dataStock } = useStockBySymbol(stock)
+  const categories = data?.map(item => item.minute)
+  const series = data?.map(item => item.close ?? item.marketClose)
+
   return (
     <Box
       px={6}
@@ -22,9 +34,9 @@ export default function Graphic() {
         <Box d="flex" alignItems="center">
           <ButtonWishList />
           <Box ml="3">
-            <Text fontWeight={500}>MSFT</Text>
+            <Text fontWeight={500}>{dataStock?.symbol}</Text>
             <Text color="gray.600" lineHeight={1}>
-              Microsoft
+              {dataStock?.companyName}
             </Text>
           </Box>
         </Box>
@@ -36,16 +48,22 @@ export default function Graphic() {
               height={16}
               width={16}
             />{' '}
-            $265,42
+            {formatterPrice(dataStock?.latestPrice ?? 0)}
           </Text>
-          <Text
-            color="red.500"
-            fontWeight={600}
-            fontSize="sm"
-            textAlign="right"
-          >
-            $-0.09 (-0.03%)
-          </Text>
+          {dataStock && (
+            <Text
+              color="red.500"
+              fontWeight={600}
+              fontSize="sm"
+              textAlign="right"
+            >
+              {formatterPrice(dataStock.change ?? 0)} (
+              {dataStock.changePercent > 0
+                ? `+${dataStock.changePercent.toFixed(3)}`
+                : dataStock.changePercent.toFixed(3)}
+              %)
+            </Text>
+          )}
         </Box>
       </Box>
 
@@ -84,6 +102,11 @@ export default function Graphic() {
               opacityTo: 0.3
             }
           },
+          yaxis: {
+            labels: {
+              formatter: value => formatterPrice(value)
+            }
+          },
           xaxis: {
             axisBorder: {
               color: '#0047BB'
@@ -91,13 +114,13 @@ export default function Graphic() {
             axisTicks: {
               color: '#0047BB'
             },
-            categories: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00']
+            categories
           }
         }}
         series={[
           {
-            name: 'Transações',
-            data: [40, 70, 60, 50, 40, 70]
+            name: 'Preço',
+            data: series ?? []
           }
         ]}
       />

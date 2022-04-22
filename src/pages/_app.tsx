@@ -10,14 +10,15 @@ import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}></Hydrate>
-      <ChakraProvider resetCSS theme={theme}>
-        <SidebarDrawerProvider>
-          <Component {...pageProps} />
-        </SidebarDrawerProvider>
-      </ChakraProvider>
-    </QueryClientProvider>
+    <ChakraProvider resetCSS theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <SidebarDrawerProvider>
+            <Component {...pageProps} />
+          </SidebarDrawerProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </ChakraProvider>
   )
 }
 
