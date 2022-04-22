@@ -26,6 +26,8 @@ jobs:
         run: |
           yarn install --frozen-lockfile --silent
           yarn build
+        env:
+          NEXT_PUBLIC_IEX_TOKEN: ${{ secrets.NEXT_PUBLIC_IEX_TOKEN }}
       - run: yarn global add @lhci/cli@0.8.x
       - name: Lighthouse
         run: lhci autorun
