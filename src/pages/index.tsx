@@ -15,7 +15,11 @@ const Graphic = dynamic(() => import('../components/Graphic'), { ssr: false })
 const SideOver = dynamic(() => import('../components/SideOver'))
 const Bloomberg = dynamic(() => import('../components/Bloomberg'))
 
-const Home: NextPage = () => {
+type Props = {
+  stock?: string
+}
+
+const Home: NextPage = ({ stock }: Props) => {
   const { data, isLoading } = useListStock()
 
   return (
@@ -33,8 +37,7 @@ const Home: NextPage = () => {
         />
 
         <SearchStock />
-
-        <Graphic />
+        {data?.length && <Graphic stock={stock ?? data[0].symbol} />}
 
         <Bloomberg stocks={data} />
       </Container>
@@ -46,12 +49,13 @@ const Home: NextPage = () => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   await queryClient.prefetchQuery('stocks', getListStock)
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient)
+      dehydratedState: dehydrate(queryClient),
+      stock: query?.stock ?? null
     }
   }
 }
