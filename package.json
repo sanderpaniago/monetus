@@ -20,7 +20,6 @@
     "react-apexcharts": "^1.4.0",
     "react-dom": "18.0.0",
     "react-query": "^3.37.0",
-    "recharts": "^2.1.9",
     "sharp": "^0.30.4",
     "swiper": "^8.1.3"
   },

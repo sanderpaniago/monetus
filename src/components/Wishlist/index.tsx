@@ -23,7 +23,6 @@ export function Wishlist() {
             changePercent={2.5}
             companyName="Twitter"
             symbol="TWTR"
-            icon="/icons/facebook.svg"
             variant="shadow"
           />
 
@@ -37,7 +36,6 @@ export function Wishlist() {
             changePercent={2.5}
             companyName="Twitter"
             symbol="TWTR"
-            icon="/icons/facebook.svg"
             variant="shadow"
           />
 
