@@ -15,7 +15,7 @@ type Props = {
   stocks?: Stock[]
 }
 
-export function Bloomberg({ stocks }: Props) {
+export default function Bloomberg({ stocks }: Props) {
   const prevButton = useRef(null)
   const nextButton = useRef(null)
   return (
@@ -56,7 +56,6 @@ export function Bloomberg({ stocks }: Props) {
         </Flex>
       </Flex>
       <Swiper
-        lazy={{ loadPrevNext: true }}
         modules={[Navigation]}
         slidesPerView={2.5}
         navigation={{

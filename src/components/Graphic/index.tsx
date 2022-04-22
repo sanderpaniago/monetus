@@ -54,6 +54,9 @@ export default function Graphic() {
         height={300}
         options={{
           chart: {
+            animations: {
+              enabled: false
+            },
             toolbar: {
               show: false
             },

@@ -3,7 +3,6 @@ import type { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { dehydrate } from 'react-query'
-import { Bloomberg } from '../components/Bloomberg'
 
 import { Container } from '../components/Container'
 import { SearchStock } from '../components/SearchStock'
@@ -12,8 +11,9 @@ import { TitlePage } from '../components/TitlePage'
 import { getListStock, useListStock } from '../hooks/useListStock'
 import { queryClient } from '../services/queryClient'
 
-const Graphic = dynamic(() => import('../components/Graphic'))
+const Graphic = dynamic(() => import('../components/Graphic'), { ssr: false })
 const SideOver = dynamic(() => import('../components/SideOver'))
+const Bloomberg = dynamic(() => import('../components/Bloomberg'))
 
 const Home: NextPage = () => {
   const { data, isLoading } = useListStock()
