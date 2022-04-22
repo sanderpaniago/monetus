@@ -1,16 +1,21 @@
-import { Box, Button, Flex, HStack, Text } from '@chakra-ui/react'
+import { useRef } from 'react'
 import Image from 'next/image'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
 
 import { ButtonWishList } from '../BUttonWishList'
 import { CardStock } from '../CardStock'
+import { Stock } from '../../hooks/useListStock'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { Navigation } from 'swiper'
-import { useRef } from 'react'
 
-export function Bloomberg() {
+type Props = {
+  stocks?: Stock[]
+}
+
+export function Bloomberg({ stocks }: Props) {
   const prevButton = useRef(null)
   const nextButton = useRef(null)
   return (
@@ -68,33 +73,16 @@ export function Bloomberg() {
         }}
         spaceBetween={16}
       >
-        <SwiperSlide>
-          <CardStock
-            btnWishList={<ButtonWishList />}
-            changePercent={2.3}
-            companyName="Facebook"
-            symbol="FB"
-            icon="/icons/facebook.svg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardStock
-            btnWishList={<ButtonWishList />}
-            changePercent={2.3}
-            companyName="Facebook"
-            symbol="FB"
-            icon="/icons/facebook.svg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardStock
-            btnWishList={<ButtonWishList />}
-            changePercent={2.3}
-            companyName="Facebook"
-            symbol="FB"
-            icon="/icons/facebook.svg"
-          />
-        </SwiperSlide>
+        {stocks?.map(stock => (
+          <SwiperSlide key={stock.symbol}>
+            <CardStock
+              btnWishList={<ButtonWishList />}
+              changePercent={stock.changePercent}
+              companyName={stock.companyName}
+              symbol={stock.symbol}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   )

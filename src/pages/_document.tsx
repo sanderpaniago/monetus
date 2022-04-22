@@ -29,6 +29,8 @@ class DocumentConfig extends Document {
           <link rel="shortcut icon" href="/logo.svg" type="image/svg" />
 
           <meta name="description" content="Monetus Dashboard Stocks" />
+
+          <link rel="shortcut icon" href="/favicon.png" type="image/x-png" />
         </Head>
         <body>
           <Main />
