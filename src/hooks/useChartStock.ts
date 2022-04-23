@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
 import { request, gql } from 'graphql-request'
-
 import { ChartStockQuery, ChartStockQueryVariables } from '@generated/graphql'
+
+import { baseUrl } from '../../config'
 
 export const query = gql`
   query ChartStock($symbol: String!, $date: String!) {
@@ -21,7 +22,7 @@ export async function getChartStock(symbol: string) {
   const { chartStock } = await request<
     ChartStockQuery,
     ChartStockQueryVariables
-  >('/api/graphql', query, { symbol, date })
+  >(`${baseUrl}/api/graphql`, query, { symbol, date })
 
   return chartStock
 }

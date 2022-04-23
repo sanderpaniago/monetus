@@ -5,6 +5,8 @@ import {
   GetLogoStockQueryVariables
 } from '@generated/graphql'
 
+import { baseUrl } from '../../config'
+
 export const query = gql`
   query GetLogoStock($symbol: String!) {
     getLogoStock(symbol: $symbol) {
@@ -17,7 +19,7 @@ export async function getLogoStock(symbol: string) {
   const { getLogoStock } = await request<
     GetLogoStockQuery,
     GetLogoStockQueryVariables
-  >('/api/graphql', query, { symbol })
+  >(`${baseUrl}/api/graphql`, query, { symbol })
 
   return getLogoStock
 }

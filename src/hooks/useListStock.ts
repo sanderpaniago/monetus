@@ -5,6 +5,8 @@ import {
   GetListStockQueryVariables
 } from '@generated/graphql'
 
+import { baseUrl } from '../../config'
+
 export const query = gql`
   query GetListStock {
     getListStock {
@@ -20,7 +22,7 @@ export async function getListStock() {
   const { getListStock } = await request<
     GetListStockQuery,
     GetListStockQueryVariables
-  >('/api/graphql', query)
+  >(`${baseUrl}/api/graphql`, query)
 
   return getListStock
 }

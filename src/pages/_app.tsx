@@ -7,6 +7,7 @@ import { queryClient } from '../services/queryClient'
 
 import '../styles/fonts.css'
 import theme from '../styles/theme'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
