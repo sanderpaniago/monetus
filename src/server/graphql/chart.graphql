@@ -1,0 +1,8 @@
+type Chart {
+  date: String!
+  minute: String!
+  label: String!
+  close: Float!
+  average: Float
+  marketClose: Float
+}

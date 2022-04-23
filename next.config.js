@@ -8,6 +8,14 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['github.com', 'storage.googleapis.com']
+  },
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.(graphql|gql)$/,
+      exclude: /node_modules/,
+      loader: 'graphql-tag/loader'
+    })
+    return config
   }
 }
 

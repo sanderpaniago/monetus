@@ -1,21 +1,28 @@
 import { useQuery } from 'react-query'
-import { api } from '../services/api'
+import { request, gql } from 'graphql-request'
+import {
+  GetListStockQuery,
+  GetListStockQueryVariables
+} from '@generated/graphql'
 
-export type Stock = {
-  changePercent: number
-  change: number
-  companyName: string
-  currency: string
-  primaryExchange: string
-  symbol: string
-  iexRealtimePrice: number
-  latestPrice: number
-}
+export const query = gql`
+  query GetListStock {
+    getListStock {
+      changePercent
+      companyName
+      symbol
+      latestPrice
+    }
+  }
+`
 
-export async function getListStock(): Promise<Stock[]> {
-  const { data } = await api.get('/stock/market/list/mostactive')
+export async function getListStock() {
+  const { getListStock } = await request<
+    GetListStockQuery,
+    GetListStockQueryVariables
+  >('/api/graphql', query)
 
-  return data
+  return getListStock
 }
 
 export function useListStock() {

@@ -18,7 +18,7 @@ export default function Graphic({ stock }: Props) {
   const { data } = useChartStock(stock)
   const { data: dataStock } = useStockBySymbol(stock)
   const categories = data?.map(item => item.minute)
-  const series = data?.map(item => item.close ?? item.marketClose)
+  const series = data?.map(item => item.close)
 
   return (
     <Box
