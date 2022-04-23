@@ -19,7 +19,7 @@ export default function Bloomberg({ stocks }: Props) {
   const prevButton = useRef(null)
   const nextButton = useRef(null)
   return (
-    <Box mt={8} w="full" maxW="750px">
+    <Box mt={8} w="full">
       <Flex align="center" mb={6} justify="space-between">
         <Flex gap={2}>
           <Image
@@ -57,10 +57,19 @@ export default function Bloomberg({ stocks }: Props) {
       </Flex>
       <Swiper
         modules={[Navigation]}
-        slidesPerView={2.5}
+        slidesPerView={3.5}
         breakpoints={{
+          1400: {
+            slidesPerView: 3.5
+          },
+          1240: {
+            slidesPerView: 2.75
+          },
           768: {
             slidesPerView: 2.5
+          },
+          500: {
+            slidesPerView: 2.15
           },
           300: {
             slidesPerView: 1.5

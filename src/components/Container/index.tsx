@@ -12,7 +12,6 @@ export function Container({ children, ...props }: ContainerProps) {
       d="flex"
       flexDirection="column"
       w="full"
-      maxWidth="100vw"
       height="100vh"
       background="gray.100"
       borderRadius="24px 0px 0px 0px;"

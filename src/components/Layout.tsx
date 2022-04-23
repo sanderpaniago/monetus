@@ -14,7 +14,11 @@ export default function Layout({ children }: Props) {
     <Box w="100vw" height="100vh" d="flex">
       <Sidebar />
 
-      <Container d="flex" flex={1}>
+      <Container
+        d="flex"
+        flex={1}
+        maxW={{ sm: '100%', lg: '65%', '2xl': '75%' }}
+      >
         {children}
       </Container>
 
