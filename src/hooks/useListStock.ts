@@ -27,8 +27,9 @@ export async function getListStock() {
   return getListStock
 }
 
-export function useListStock() {
-  return useQuery('stocks', () => getListStock(), {
-    staleTime: 1000 * 60 * 1 // 1 minute
+export function useListStock(initialData?: GetListStockQuery['getListStock']) {
+  return useQuery('stocks', getListStock, {
+    staleTime: 1000 * 60 * 1, // 1 minute
+    initialData
   })
 }

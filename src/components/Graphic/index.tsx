@@ -1,4 +1,5 @@
 import { Box, Text } from '@chakra-ui/react'
+import { ChartStockQuery } from '@generated/graphql'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton'
@@ -13,10 +14,11 @@ const Chart = dynamic(() => import('react-apexcharts'), {
 
 type Props = {
   stock: string
+  initialData: ChartStockQuery['chartStock']
 }
 
-export default function Graphic({ stock }: Props) {
-  const { data, isLoading } = useChartStock(stock)
+export default function Graphic({ stock, initialData }: Props) {
+  const { data, isLoading } = useChartStock(stock, initialData)
   const { data: dataStock } = useStockBySymbol(stock)
   const categories = data?.map(item => item.minute)
   const series = data?.map(item => item.close)
