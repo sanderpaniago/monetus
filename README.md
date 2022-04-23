@@ -4,7 +4,8 @@
 
 
 ## 🔬 Tecnologias
-Saindo um pouco do cotidiano foi utilizado um servidor graphql lambda utilizando a ferramenta Envelop juntamente com o React Query para possibilitar o mair controle dos dados e não depender de um Back-end graphl, com essa estratégia é possivel montar um servidor Graphql totalmente customizado.
+
+Saindo um pouco do quotidiano foi utilizado um servidor graphql lambda utilizando a ferramenta Envelop juntamente com o React Query para possibilitar o maior controle dos dados e não depender de um Back-end graphl, com essa estratégia é possível montar um servidor Graphql totalmente customizado.
 
 **Esse projeto foi desenvolvido com:**
 

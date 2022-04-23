@@ -19,7 +19,7 @@ export function Wishlist() {
         </Text>
       </Flex>
 
-      <VStack w="full" mt={8} spacing="32px">
+      <VStack w="full" mt={8} pb={8} spacing="32px">
         {items.map(item => (
           <Box d="flex" w="full" key={item.symbol}>
             <CardStock
