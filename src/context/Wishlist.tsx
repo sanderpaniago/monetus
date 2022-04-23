@@ -16,7 +16,7 @@ type Item = Stock
 type WishlistContextData = {
   items: Item[]
   removeItemBySymbol: (symbol: string) => void
-  addItemBySymbol: (stock: Item) => void
+  toggleItemBySymbol: (stock: Item) => void
   getItemBySymbol: (symbol: string) => void
 }
 
@@ -38,7 +38,14 @@ export function WishlistProvider({ children }: WishlistProviderProps) {
     localStorage.setItem('wishlist', JSON.stringify(newItems))
   }
 
-  function addItemBySymbol(stock: Item) {
+  function toggleItemBySymbol(stock: Item) {
+    const hasItem = items.find(item => item.symbol === stock.symbol)
+
+    if (hasItem) {
+      removeItemBySymbol(stock.symbol)
+      return
+    }
+
     const newItems = [...items, stock]
     setItems(newItems)
     localStorage.setItem('wishlist', JSON.stringify(newItems))
@@ -50,7 +57,7 @@ export function WishlistProvider({ children }: WishlistProviderProps) {
 
   return (
     <WishlistContext.Provider
-      value={{ items, removeItemBySymbol, addItemBySymbol, getItemBySymbol }}
+      value={{ items, removeItemBySymbol, toggleItemBySymbol, getItemBySymbol }}
     >
       {children}
     </WishlistContext.Provider>

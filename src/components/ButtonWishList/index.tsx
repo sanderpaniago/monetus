@@ -8,7 +8,7 @@ type Props = {
 }
 
 export function ButtonWishList({ stock }: Props) {
-  const { addItemBySymbol, getItemBySymbol } = useWishlist()
+  const { toggleItemBySymbol, getItemBySymbol } = useWishlist()
 
   const hasAdded = Boolean(getItemBySymbol(stock.symbol))
   return (
@@ -17,7 +17,7 @@ export function ButtonWishList({ stock }: Props) {
       type="button"
       aria-label="wishlist-button"
       height={'16px'}
-      onClick={() => addItemBySymbol(stock)}
+      onClick={() => toggleItemBySymbol(stock)}
     >
       <Image
         src={hasAdded ? '/icons/star.svg' : '/icons/star-outline.svg'}
