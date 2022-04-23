@@ -23,11 +23,13 @@ export default function Sidebar() {
     return (
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
-          <DrawerContent bg="gray.800" p="4">
+          <DrawerContent bg="white" p="4">
             <DrawerCloseButton mt="6" />
-            <DrawerHeader>Navegação</DrawerHeader>
+            <DrawerHeader>
+              <Logo />
+            </DrawerHeader>
 
-            <DrawerBody>
+            <DrawerBody mt={6}>
               <SidebarNav />
             </DrawerBody>
           </DrawerContent>

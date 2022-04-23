@@ -11,6 +11,7 @@ export function UserBar() {
       borderRadius="full"
       p={1}
       justifyContent="space-between"
+      maxH="40px"
     >
       <Image
         src="https://github.com/sanderpaniago.png"
@@ -18,7 +19,14 @@ export function UserBar() {
         width={32}
         height={32}
       />
-      <Text fontWeight={500} color="primary">
+      <Text
+        fontWeight={500}
+        color="primary"
+        maxW="70%"
+        textOverflow="ellipsis"
+        overflow="hidden"
+        whiteSpace="nowrap"
+      >
         Sander Pereira Paniago
       </Text>
 

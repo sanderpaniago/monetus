@@ -43,7 +43,7 @@ export function CardStock({
         }}
         passHref
       >
-        <Box>
+        <Box d="flex" alignItems="center" flex={1} gap={2}>
           <Flex align="center" gap={2}>
             {data && data.url && (
               <Image

@@ -1,5 +1,7 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text, useBreakpointValue } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useSidebarDrawer } from 'src/context/SidebarDrawerContext'
+import { UserBar } from '../UserBar'
 
 type TitlePageProps = {
   title: string
@@ -8,12 +10,23 @@ type TitlePageProps = {
 }
 
 export function TitlePage({ title, icon, iconLabel }: TitlePageProps) {
+  const isDrawerSideBar = useBreakpointValue({
+    base: true,
+    lg: false
+  })
+  const { onOpen } = useSidebarDrawer()
   return (
-    <Box d="flex" gap="10px">
-      <Image src={icon} alt={iconLabel} width={24} height={24} />
-      <Text fontSize="2xl" fontWeight={600}>
-        {title}
-      </Text>
+    <Box d="flex" justifyContent="space-between" alignItems="center">
+      <Box d="flex" gap="10px" alignItems="center">
+        <Box as="button" onClick={() => onOpen()} height="24px">
+          <Image src={icon} alt={iconLabel} width={24} height={24} />
+        </Box>
+        <Text fontSize="2xl" fontWeight={600}>
+          {title}
+        </Text>
+      </Box>
+
+      {isDrawerSideBar && <UserBar />}
     </Box>
   )
 }
