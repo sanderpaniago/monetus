@@ -1,7 +1,9 @@
 import { Box, Text } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useSidebarDrawer } from 'src/context/SidebarDrawerContext'
 
 export function UserBar() {
+  const { onOpenState } = useSidebarDrawer()
   return (
     <Box
       d="flex"
@@ -12,6 +14,7 @@ export function UserBar() {
       p={1}
       justifyContent="space-between"
       maxH="40px"
+      onClick={() => onOpenState('sideOver')}
     >
       <Image
         src="https://github.com/sanderpaniago.png"
@@ -22,7 +25,7 @@ export function UserBar() {
       <Text
         fontWeight={500}
         color="primary"
-        maxW="70%"
+        maxW="60%"
         textOverflow="ellipsis"
         overflow="hidden"
         whiteSpace="nowrap"

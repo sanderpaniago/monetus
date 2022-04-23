@@ -32,6 +32,8 @@ export function useChartStock(
   initialData: ChartStockQuery['chartStock']
 ) {
   return useQuery(['chart', symbol], () => getChartStock(symbol), {
-    initialData
+    initialData,
+    refetchInterval: 1000 * 60 * 60 * 24, // 1 day
+    staleTime: 1000 * 60 * 60 * 24 // 1 day
   })
 }
