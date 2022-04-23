@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
 import { useLogoStock } from '../../hooks/useLogoStock'
 
 type Props = {
@@ -18,7 +19,7 @@ export function CardStock({
   changePercent,
   variant = 'primary'
 }: Props) {
-  const { data } = useLogoStock(symbol)
+  const { data, isLoading } = useLogoStock(symbol)
 
   return (
     <Flex
@@ -34,26 +35,23 @@ export function CardStock({
       boxShadow={variant === 'shadow' ? 'card' : 'none'}
     >
       {btnWishList && btnWishList}
-      <Link
-        href={'/'}
-        as={{
-          query: {
-            stock: symbol
-          }
-        }}
-        passHref
-      >
+      <Link href={`/${symbol}`} passHref>
         <Box d="flex" alignItems="center" flex={1} gap={2}>
           <Flex align="center" gap={2}>
-            {data && data.url && (
-              <Image
-                src={data.url}
-                alt={companyName}
-                width={36}
-                height={36}
-                style={{ borderRadius: '50%' }}
-                objectFit="contain"
-              />
+            {isLoading ? (
+              <Skeleton borderRadius="50%" width={36} height={36} />
+            ) : (
+              data &&
+              data.url && (
+                <Image
+                  src={data.url}
+                  alt={companyName}
+                  width={36}
+                  height={36}
+                  style={{ borderRadius: '50%' }}
+                  objectFit="contain"
+                />
+              )
             )}
             <Box>
               <Text fontWeight="medium" lineHeight={1}>

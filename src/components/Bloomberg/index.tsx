@@ -58,6 +58,14 @@ export default function Bloomberg({ stocks }: Props) {
       <Swiper
         modules={[Navigation]}
         slidesPerView={2.5}
+        breakpoints={{
+          768: {
+            slidesPerView: 2.5
+          },
+          300: {
+            slidesPerView: 1.5
+          }
+        }}
         navigation={{
           nextEl: nextButton.current,
           prevEl: prevButton.current
