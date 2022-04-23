@@ -22,11 +22,16 @@ export async function getChartStock(symbol: string) {
   const { chartStock } = await request<
     ChartStockQuery,
     ChartStockQueryVariables
-  >(`${baseUrl}/api/graphql`, query, { symbol, date })
+  >(`${baseUrl}/api/graphql`, query, { symbol, date: '20220421' })
 
   return chartStock
 }
 
-export function useChartStock(symbol: string) {
-  return useQuery(['chart', symbol], () => getChartStock(symbol))
+export function useChartStock(
+  symbol: string,
+  initialData: ChartStockQuery['chartStock']
+) {
+  return useQuery(['chart', symbol], () => getChartStock(symbol), {
+    initialData
+  })
 }

@@ -1,14 +1,14 @@
 import { Box } from '@chakra-ui/react'
+import { ChartStockQuery, GetListStockQuery } from '@generated/graphql'
 import type { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { dehydrate } from 'react-query'
 
 import { Container } from 'src/components/Container'
 import { SearchStock } from 'src/components/SearchStock'
 import { TitlePage } from 'src/components/TitlePage'
+import { getChartStock } from 'src/hooks/useChartStock'
 import { getListStock, useListStock } from 'src/hooks/useListStock'
-import { queryClient } from 'src/services/queryClient'
 
 const Sidebar = dynamic(() => import('src/components/Sidebar'))
 const Graphic = dynamic(() => import('src/components/Graphic'), { ssr: false })
@@ -17,10 +17,12 @@ const Bloomberg = dynamic(() => import('src/components/Bloomberg'))
 
 type Props = {
   stock?: string
+  stocksList: GetListStockQuery['getListStock']
+  chartData: ChartStockQuery['chartStock']
 }
 
-const Home: NextPage = ({ stock }: Props) => {
-  const { data } = useListStock()
+const Home = ({ stock, stocksList, chartData }: Props) => {
+  const { data } = useListStock(stocksList)
 
   return (
     <Box w="100vw" height="100vh" d="flex">
@@ -38,7 +40,10 @@ const Home: NextPage = ({ stock }: Props) => {
 
         <SearchStock />
 
-        <Graphic stock={stock ?? data?.[0].symbol ?? ''} />
+        <Graphic
+          initialData={chartData}
+          stock={stock ?? data?.[0].symbol ?? ''}
+        />
 
         <Bloomberg stocks={data} />
       </Container>
@@ -51,12 +56,15 @@ const Home: NextPage = ({ stock }: Props) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  await queryClient.prefetchQuery('stocks', getListStock)
+  const stocksList = await getListStock()
+  const symbol = query.stock as string
+  const chartData = await getChartStock(symbol ?? stocksList[0].symbol)
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
-      stock: query?.stock ?? null
+      stock: query?.stock ?? null,
+      stocksList,
+      chartData
     }
   }
 }

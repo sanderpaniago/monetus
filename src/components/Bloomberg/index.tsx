@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { GetListStockQuery } from '@generated/graphql'
 
-import { ButtonWishList } from '../BUttonWishList'
+import { ButtonWishList } from '../ButtonWishList'
 import { CardStock } from '../CardStock'
 
 import 'swiper/css'
@@ -75,7 +75,7 @@ export default function Bloomberg({ stocks }: Props) {
         {stocks?.map(stock => (
           <SwiperSlide key={stock.symbol}>
             <CardStock
-              btnWishList={<ButtonWishList />}
+              btnWishList={<ButtonWishList stock={stock} />}
               changePercent={stock.changePercent}
               companyName={stock.companyName}
               symbol={stock.symbol}
