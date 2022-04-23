@@ -100,7 +100,7 @@ jobs:
                         }).join('---');
 
                         core.setOutput("comment", comment);
-                      }
+                      };
             - name: Add Lighthouse comment to PR
               id: lighthouse_comment_to_pr
               if: ${{ always() }}
