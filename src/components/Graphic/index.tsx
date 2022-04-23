@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import Skeleton from 'react-loading-skeleton'
 import { useChartStock } from '../../hooks/useChartStock'
 import { useStockBySymbol } from '../../hooks/useStockBySymbol'
 import { formatterPrice } from '../../utils/formatter'
@@ -15,10 +16,22 @@ type Props = {
 }
 
 export default function Graphic({ stock }: Props) {
-  const { data } = useChartStock(stock)
+  const { data, isLoading } = useChartStock(stock)
   const { data: dataStock } = useStockBySymbol(stock)
   const categories = data?.map(item => item.minute)
-  const series = data?.map(item => item.close ?? item.marketClose)
+  const series = data?.map(item => item.close)
+
+  if (isLoading) {
+    return (
+      <Skeleton
+        height={300}
+        width="100%"
+        baseColor="#FFF"
+        borderRadius="8px"
+        style={{ marginTop: '36px' }}
+      />
+    )
+  }
 
   return (
     <Box

@@ -12,7 +12,7 @@ import { useSidebarDrawer } from '../../context/SidebarDrawerContext'
 import { Logo } from '../Logo'
 import { SidebarNav } from './SiderBarNav'
 
-export function Sidebar() {
+export default function Sidebar() {
   const { isOpen, onClose } = useSidebarDrawer()
   const isDrawerSideBar = useBreakpointValue({
     base: true,

@@ -3,16 +3,16 @@ import Image from 'next/image'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import { GetListStockQuery } from '@generated/graphql'
 
 import { ButtonWishList } from '../BUttonWishList'
 import { CardStock } from '../CardStock'
-import { Stock } from '../../hooks/useListStock'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 
 type Props = {
-  stocks?: Stock[]
+  stocks?: GetListStockQuery['getListStock']
 }
 
 export default function Bloomberg({ stocks }: Props) {

@@ -13,8 +13,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "@generated/*": ["@generated/*"]
+    } 
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "@generated/**/*.ts",
+    "next-env.d.ts"
+  ],
+  "exclude": ["node_modules", "public", "**/*.graphql"]
 }

@@ -1,14 +1,27 @@
 import { useQuery } from 'react-query'
-import { api } from '../services/api'
+import { request, gql } from 'graphql-request'
+import {
+  GetLogoStockQuery,
+  GetLogoStockQueryVariables
+} from '@generated/graphql'
 
-type GetLogoResponse = {
-  url: string
-}
+import { baseUrl } from '../../config'
 
-export async function getLogoStock(symbol: string): Promise<GetLogoResponse> {
-  const { data } = await api.get(`/stock/${symbol}/logo`)
+export const query = gql`
+  query GetLogoStock($symbol: String!) {
+    getLogoStock(symbol: $symbol) {
+      url
+    }
+  }
+`
 
-  return data
+export async function getLogoStock(symbol: string) {
+  const { getLogoStock } = await request<
+    GetLogoStockQuery,
+    GetLogoStockQueryVariables
+  >(`${baseUrl}/api/graphql`, query, { symbol })
+
+  return getLogoStock
 }
 
 export function useLogoStock(symbol: string) {

@@ -4,23 +4,23 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { dehydrate } from 'react-query'
 
-import { Container } from '../components/Container'
-import { SearchStock } from '../components/SearchStock'
-import { Sidebar } from '../components/Sidebar'
-import { TitlePage } from '../components/TitlePage'
-import { getListStock, useListStock } from '../hooks/useListStock'
-import { queryClient } from '../services/queryClient'
+import { Container } from 'src/components/Container'
+import { SearchStock } from 'src/components/SearchStock'
+import { TitlePage } from 'src/components/TitlePage'
+import { getListStock, useListStock } from 'src/hooks/useListStock'
+import { queryClient } from 'src/services/queryClient'
 
-const Graphic = dynamic(() => import('../components/Graphic'), { ssr: false })
-const SideOver = dynamic(() => import('../components/SideOver'))
-const Bloomberg = dynamic(() => import('../components/Bloomberg'))
+const Sidebar = dynamic(() => import('src/components/Sidebar'))
+const Graphic = dynamic(() => import('src/components/Graphic'), { ssr: false })
+const SideOver = dynamic(() => import('src/components/SideOver'))
+const Bloomberg = dynamic(() => import('src/components/Bloomberg'))
 
 type Props = {
   stock?: string
 }
 
 const Home: NextPage = ({ stock }: Props) => {
-  const { data, isLoading } = useListStock()
+  const { data } = useListStock()
 
   return (
     <Box w="100vw" height="100vh" d="flex">
@@ -37,7 +37,8 @@ const Home: NextPage = ({ stock }: Props) => {
         />
 
         <SearchStock />
-        {data?.length && <Graphic stock={stock ?? data[0].symbol} />}
+
+        <Graphic stock={stock ?? data?.[0].symbol ?? ''} />
 
         <Bloomberg stocks={data} />
       </Container>

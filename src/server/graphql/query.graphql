@@ -1,0 +1,6 @@
+type Query {
+  getListStock: [Stock!]!
+  getLogoStock(symbol: String!): Logo!
+  getStockBySymbol(symbol: String!): Stock!
+  chartStock(symbol: String!, date: String!): [Chart!]!
+}

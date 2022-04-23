@@ -1,20 +1,31 @@
 import { useQuery } from 'react-query'
-import { api } from '../services/api'
+import { request, gql } from 'graphql-request'
+import {
+  GetStockBySymbolQuery,
+  GetStockBySymbolQueryVariables
+} from '@generated/graphql'
 
-type GetStockBySymbolResponse = {
-  symbol: string
-  companyName: string
-  change: number
-  changePercent: number
-  latestPrice: number
-}
+import { baseUrl } from '../../config'
 
-export async function getStockBySymbol(
-  symbol: string
-): Promise<GetStockBySymbolResponse> {
-  const { data } = await api.get(`/stock/${symbol}/quote`)
+export const query = gql`
+  query GetStockBySymbol($symbol: String!) {
+    getStockBySymbol(symbol: $symbol) {
+      symbol
+      companyName
+      change
+      changePercent
+      latestPrice
+    }
+  }
+`
 
-  return data
+export async function getStockBySymbol(symbol: string) {
+  const { getStockBySymbol } = await request<
+    GetStockBySymbolQuery,
+    GetStockBySymbolQueryVariables
+  >(`${baseUrl}/api/graphql`, query, { symbol })
+
+  return getStockBySymbol
 }
 
 export function useStockBySymbol(symbol: string) {
