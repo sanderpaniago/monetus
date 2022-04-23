@@ -11,14 +11,16 @@ Saindo um pouco do cotidiano foi utilizado um servidor graphql lambda utilizando
 - NextJs
 - Typescript
 - Chakra-ui
-- React Query;
-- Grpahql Envelop
+- [React Query](https://react-query.tanstack.com/)
+- [Grpahql Envelop](https://www.envelop.dev/)
 
 ## 💻 Projeto
 Uma Dashboard para facilitar a visualização das principais ações da NASDAQ
 ## 📝 Pré-requisitos:
 
-Você precisa do NodeJs e um gerenciador de dependências(NPM ou YARN) em sua maquina.
+- Você precisa do NodeJs e um gerenciador de dependências(NPM ou YARN) em sua maquina.
+
+- Também será necessário definir o token público, basta acessar o console do [IEX Cloud](https://iexcloud.io/console/tokens)
 
 ### instalando as dependências:
 
@@ -49,7 +51,7 @@ Criar um arquivo `.env.local` baseado no arquivo `.env.example`
 
 ## 🚀 Build
 
-[click aqui](https://www.monetus.sanderpaniago.dev).
+[click aqui](https://monetus.sanderpaniago.dev/).
 
 ## 🗝 licenças
 
