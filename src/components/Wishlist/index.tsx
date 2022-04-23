@@ -1,8 +1,10 @@
 import { Box, Flex, VStack, Text } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useWishlist } from 'src/context/Wishlist'
 import { CardStock } from '../CardStock'
 
 export function Wishlist() {
+  const { items, removeItemBySymbol } = useWishlist()
   return (
     <Box>
       <Flex align="center" gap={2} mt={8}>
@@ -18,31 +20,25 @@ export function Wishlist() {
       </Flex>
 
       <VStack w="full" mt={8} spacing="32px">
-        <Box d="flex" w="full">
-          <CardStock
-            changePercent={2.5}
-            companyName="Twitter"
-            symbol="TWTR"
-            variant="shadow"
-          />
+        {items.map(item => (
+          <Box d="flex" w="full" key={item.symbol}>
+            <CardStock
+              changePercent={item.changePercent}
+              companyName={item.companyName}
+              symbol={item.symbol}
+              variant="shadow"
+            />
 
-          <Box as="button" aria-label="delete-item-wishlist" ml={2}>
-            <Image src="/icons/delete.svg" alt="" width={24} height={24} />
+            <Box
+              as="button"
+              aria-label="delete-item-wishlist"
+              ml={2}
+              onClick={() => removeItemBySymbol(item.symbol)}
+            >
+              <Image src="/icons/delete.svg" alt="" width={24} height={24} />
+            </Box>
           </Box>
-        </Box>
-
-        <Box d="flex" w="full">
-          <CardStock
-            changePercent={2.5}
-            companyName="Twitter"
-            symbol="TWTR"
-            variant="shadow"
-          />
-
-          <Box as="button" aria-label="delete-item-wishlist" ml={2}>
-            <Image src="/icons/delete.svg" alt="" width={24} height={24} />
-          </Box>
-        </Box>
+        ))}
       </VStack>
     </Box>
   )

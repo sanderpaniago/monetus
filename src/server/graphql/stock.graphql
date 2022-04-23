@@ -2,10 +2,7 @@ type Stock {
   changePercent: Float!
   change: Float!
   companyName: String!
-  currency: String!
-  primaryExchange: String!
   symbol: String!
-  iexRealtimePrice: Float!
   latestPrice: Float!
 }
 

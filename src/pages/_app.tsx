@@ -8,15 +8,18 @@ import { queryClient } from '../services/queryClient'
 import '../styles/fonts.css'
 import theme from '../styles/theme'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { WishlistProvider } from 'src/context/Wishlist'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <SidebarDrawerProvider>
-            <Component {...pageProps} />
-          </SidebarDrawerProvider>
+          <WishlistProvider>
+            <SidebarDrawerProvider>
+              <Component {...pageProps} />
+            </SidebarDrawerProvider>
+          </WishlistProvider>
         </Hydrate>
       </QueryClientProvider>
     </ChakraProvider>

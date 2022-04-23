@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton'
 import { useChartStock } from '../../hooks/useChartStock'
 import { useStockBySymbol } from '../../hooks/useStockBySymbol'
 import { formatterPrice } from '../../utils/formatter'
-import { ButtonWishList } from '../BUttonWishList'
+import { ButtonWishList } from '../ButtonWishList'
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false
@@ -47,7 +47,7 @@ export default function Graphic({ stock, initialData }: Props) {
     >
       <Box d="flex" alignItems="center" justifyContent="space-between" mb={2}>
         <Box d="flex" alignItems="center">
-          <ButtonWishList />
+          {!!dataStock?.symbol && <ButtonWishList stock={dataStock} />}
           <Box ml="3">
             <Text fontWeight={500}>{dataStock?.symbol}</Text>
             <Text color="gray.600" lineHeight={1}>

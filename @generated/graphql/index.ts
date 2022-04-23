@@ -52,10 +52,7 @@ export type Stock = {
   change: Scalars['Float'];
   changePercent: Scalars['Float'];
   companyName: Scalars['String'];
-  currency: Scalars['String'];
-  iexRealtimePrice: Scalars['Float'];
   latestPrice: Scalars['Float'];
-  primaryExchange: Scalars['String'];
   symbol: Scalars['String'];
 };
 
@@ -70,7 +67,7 @@ export type ChartStockQuery = { chartStock: Array<{ date: string, minute: string
 export type GetListStockQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListStockQuery = { getListStock: Array<{ changePercent: number, companyName: string, symbol: string, latestPrice: number }> };
+export type GetListStockQuery = { getListStock: Array<{ changePercent: number, change: number, companyName: string, symbol: string, latestPrice: number }> };
 
 export type GetLogoStockQueryVariables = Exact<{
   symbol: Scalars['String'];

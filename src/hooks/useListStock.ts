@@ -11,6 +11,7 @@ export const query = gql`
   query GetListStock {
     getListStock {
       changePercent
+      change
       companyName
       symbol
       latestPrice
