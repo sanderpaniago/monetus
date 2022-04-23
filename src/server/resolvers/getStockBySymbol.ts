@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql'
 import { api } from 'src/services/api'
 
 type Variables = {
@@ -5,6 +6,10 @@ type Variables = {
 }
 
 export const getStockBySymbol = async (_: unknown, { symbol }: Variables) => {
-  const { data } = await api.get(`/stock/${symbol}/quote`)
-  return data
+  try {
+    const { data } = await api.get(`/stock/${symbol}/quote`)
+    return data
+  } catch {
+    new GraphQLError('Stock not found')
+  }
 }

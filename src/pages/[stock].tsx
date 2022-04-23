@@ -19,13 +19,13 @@ type Props = {
   chartData: ChartStockQuery['chartStock']
 }
 
-const Home = ({ stocksList, chartData }: Props) => {
+const Stock = ({ stock, stocksList, chartData }: Props) => {
   const { data } = useListStock(stocksList)
 
   return (
     <>
       <Head>
-        <title>Monetus | Dashboard</title>
+        <title>Monetus | {stock}</title>
       </Head>
 
       <TitlePage
@@ -36,23 +36,28 @@ const Home = ({ stocksList, chartData }: Props) => {
 
       <SearchStock />
 
-      <Graphic initialData={chartData} stock={data?.[0].symbol ?? ''} />
+      <Graphic
+        initialData={chartData}
+        stock={stock ?? data?.[0].symbol ?? ''}
+      />
 
       <Bloomberg stocks={data} />
     </>
   )
 }
 
-export default Home
+export default Stock
 
-Home.getLayout = (page: React.ReactNode) => <Layout>{page}</Layout>
+Stock.getLayout = (page: React.ReactNode) => <Layout>{page}</Layout>
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const stocksList = await getListStock()
-  const chartData = await getChartStock(stocksList[0].symbol)
+  const symbol = query.stock as string
+  const chartData = await getChartStock(symbol)
 
   return {
     props: {
+      stock: query.stock,
       stocksList,
       chartData
     }

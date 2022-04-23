@@ -29,7 +29,7 @@ export type Query = {
   chartStock: Array<Chart>;
   getListStock: Array<Stock>;
   getLogoStock: Logo;
-  getStockBySymbol: Stock;
+  getStockBySymbol: Maybe<Stock>;
 };
 
 
@@ -81,4 +81,4 @@ export type GetStockBySymbolQueryVariables = Exact<{
 }>;
 
 
-export type GetStockBySymbolQuery = { getStockBySymbol: { symbol: string, companyName: string, change: number, changePercent: number, latestPrice: number } };
+export type GetStockBySymbolQuery = { getStockBySymbol: { symbol: string, companyName: string, change: number, changePercent: number, latestPrice: number } | null };

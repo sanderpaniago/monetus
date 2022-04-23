@@ -9,7 +9,16 @@ import { formatterPrice } from '../../utils/formatter'
 import { ButtonWishList } from '../ButtonWishList'
 
 const Chart = dynamic(() => import('react-apexcharts'), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      height={300}
+      width="100%"
+      baseColor="#FFF"
+      borderRadius="8px"
+      style={{ marginBottom: '20px' }}
+    />
+  )
 })
 
 type Props = {
@@ -19,14 +28,14 @@ type Props = {
 
 export default function Graphic({ stock, initialData }: Props) {
   const { data, isLoading } = useChartStock(stock, initialData)
-  const { data: dataStock } = useStockBySymbol(stock)
+  const { data: dataStock, isLoading: stockLoading } = useStockBySymbol(stock)
   const categories = data?.map(item => item.minute)
   const series = data?.map(item => item.close)
 
   if (isLoading) {
     return (
       <Skeleton
-        height={300}
+        height={400}
         width="100%"
         baseColor="#FFF"
         borderRadius="8px"
@@ -49,10 +58,16 @@ export default function Graphic({ stock, initialData }: Props) {
         <Box d="flex" alignItems="center">
           {!!dataStock?.symbol && <ButtonWishList stock={dataStock} />}
           <Box ml="3">
-            <Text fontWeight={500}>{dataStock?.symbol}</Text>
-            <Text color="gray.600" lineHeight={1}>
-              {dataStock?.companyName}
-            </Text>
+            {stockLoading ? (
+              <Skeleton width={170} height={20} baseColor="#FFF" count={2} />
+            ) : (
+              <>
+                <Text fontWeight={500}>{dataStock?.symbol}</Text>
+                <Text color="gray.600" lineHeight={1}>
+                  {dataStock?.companyName}
+                </Text>
+              </>
+            )}
           </Box>
         </Box>
         <Box>
