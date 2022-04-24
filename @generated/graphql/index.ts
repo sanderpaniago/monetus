@@ -30,7 +30,6 @@ export type Query = {
 
 
 export type QueryChartStockArgs = {
-  date: Scalars['String'];
   symbol: Scalars['String'];
 };
 
@@ -54,7 +53,6 @@ export type Stock = {
 
 export type ChartStockQueryVariables = Exact<{
   symbol: Scalars['String'];
-  date: Scalars['String'];
 }>;
 
 

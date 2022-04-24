@@ -3,10 +3,9 @@ import { api } from 'src/services/api'
 
 type Variables = {
   symbol: string
-  date: string
 }
 
-export const chartStock = async (_: unknown, { symbol, date }: Variables) => {
+export const chartStock = async (_: unknown, { symbol }: Variables) => {
   try {
     const { data } = await api.get(`/stock/${symbol}/chart/dynamic`)
     return data.data
