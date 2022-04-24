@@ -71,28 +71,34 @@ export default function Graphic({ stock, initialData }: Props) {
           </Box>
         </Box>
         <Box>
-          <Text fontWeight={600} textAlign="right">
-            <Image
-              src="/icons/graph-down.svg"
-              alt="stock down graph"
-              height={16}
-              width={16}
-            />{' '}
-            {formatterPrice(dataStock?.latestPrice ?? 0)}
-          </Text>
           {dataStock && (
-            <Text
-              color="red.500"
-              fontWeight={600}
-              fontSize="sm"
-              textAlign="right"
-            >
-              {formatterPrice(dataStock.change ?? 0)} (
-              {dataStock.changePercent > 0
-                ? `+${dataStock.changePercent.toFixed(3)}`
-                : dataStock.changePercent.toFixed(3)}
-              %)
-            </Text>
+            <>
+              <Text fontWeight={600} textAlign="right">
+                <Image
+                  src={
+                    dataStock?.changePercent > 0
+                      ? '/icons/graph-up.svg'
+                      : '/icons/graph-down.svg'
+                  }
+                  alt="stock down graph"
+                  height={16}
+                  width={16}
+                />{' '}
+                {formatterPrice(dataStock?.latestPrice ?? 0)}
+              </Text>
+              <Text
+                color={dataStock.changePercent > 0 ? 'green.500' : 'red.500'}
+                fontWeight={600}
+                fontSize="sm"
+                textAlign="right"
+              >
+                {formatterPrice(dataStock.change ?? 0)} (
+                {dataStock.changePercent > 0
+                  ? `+${dataStock.changePercent.toFixed(3)}`
+                  : dataStock.changePercent.toFixed(3)}
+                %)
+              </Text>
+            </>
           )}
         </Box>
       </Box>
@@ -120,7 +126,18 @@ export default function Graphic({ stock, initialData }: Props) {
             enabled: false
           },
           tooltip: {
-            theme: 'dark'
+            theme: 'dark',
+            marker: {
+              show: false
+            },
+            x: {
+              show: false
+            },
+            y: {
+              title: {
+                formatter: () => ''
+              }
+            }
           },
 
           fill: {
@@ -129,7 +146,13 @@ export default function Graphic({ stock, initialData }: Props) {
             gradient: {
               shade: 'dark',
               opacityFrom: 0.7,
-              opacityTo: 0.3
+              opacityTo: 0.2
+            },
+            pattern: {
+              style: 'verticalLines',
+              width: 6,
+              height: 6,
+              strokeWidth: 2
             }
           },
           yaxis: {

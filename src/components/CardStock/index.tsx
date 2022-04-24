@@ -33,6 +33,7 @@ export function CardStock({
       w="full"
       cursor="pointer"
       boxShadow={variant === 'shadow' ? 'card' : 'none'}
+      _hover={{ boxShadow: 'card' }}
     >
       {btnWishList && btnWishList}
       <Link href={`/${symbol}`} passHref>
@@ -43,14 +44,16 @@ export function CardStock({
             ) : (
               data &&
               data.url && (
-                <Image
-                  src={data.url}
-                  alt={companyName}
-                  width={36}
-                  height={36}
-                  style={{ borderRadius: '50%' }}
-                  objectFit="contain"
-                />
+                <Box width="34px" h="34px">
+                  <Image
+                    src={data.url}
+                    alt={companyName}
+                    width={34}
+                    height={34}
+                    style={{ borderRadius: '50%' }}
+                    objectFit="contain"
+                  />
+                </Box>
               )
             )}
             <Box>
@@ -61,7 +64,7 @@ export function CardStock({
                 fontWeight="regular"
                 color="gray.600"
                 lineHeight={1}
-                maxW={'110px'}
+                maxW={'100px'}
                 whiteSpace="nowrap"
                 overflow="hidden"
                 textOverflow="ellipsis"

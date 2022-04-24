@@ -4,13 +4,14 @@ import { ReactElement, ReactNode } from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Hydrate, QueryClientProvider } from 'react-query'
 
-import { SidebarDrawerProvider } from '../context/SidebarDrawerContext'
-import { queryClient } from '../services/queryClient'
-
-import '../styles/fonts.css'
-import theme from '../styles/theme'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { SidebarDrawerProvider } from 'src/context/SidebarDrawerContext'
+import { queryClient } from 'src/services/queryClient'
 import { WishlistProvider } from 'src/context/Wishlist'
+
+import 'src/styles/fonts.css'
+import 'src/styles/react-apexchart.css'
+import theme from 'src/styles/theme'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
