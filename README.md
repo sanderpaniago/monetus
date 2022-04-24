@@ -1,4 +1,4 @@
-# Nasdaq-dash [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers) [![GitHub issues](https://img.shields.io/github/sanderpaniago/issues/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/issues) [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers)
+# Nasdaq-dash [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers) [![GitHub issues](https://img.shields.io/github/issues/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/issues) [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers)
 
 ![image](https://user-images.githubusercontent.com/52095222/164945501-d9fe3f4c-a149-4942-aa66-ec68ba5cdae1.png)
 
