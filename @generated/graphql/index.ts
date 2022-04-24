@@ -13,12 +13,8 @@ export type Scalars = {
 };
 
 export type Chart = {
-  average: Maybe<Scalars['Float']>;
   close: Scalars['Float'];
   date: Scalars['String'];
-  label: Scalars['String'];
-  marketClose: Maybe<Scalars['Float']>;
-  minute: Scalars['String'];
 };
 
 export type Logo = {
@@ -26,7 +22,7 @@ export type Logo = {
 };
 
 export type Query = {
-  chartStock: Array<Chart>;
+  chartStock: Maybe<Array<Chart>>;
   getListStock: Array<Stock>;
   getLogoStock: Logo;
   getStockBySymbol: Maybe<Stock>;
@@ -34,7 +30,6 @@ export type Query = {
 
 
 export type QueryChartStockArgs = {
-  date: Scalars['String'];
   symbol: Scalars['String'];
 };
 
@@ -58,11 +53,10 @@ export type Stock = {
 
 export type ChartStockQueryVariables = Exact<{
   symbol: Scalars['String'];
-  date: Scalars['String'];
 }>;
 
 
-export type ChartStockQuery = { chartStock: Array<{ date: string, minute: string, label: string, close: number, average: number | null, marketClose: number | null }> };
+export type ChartStockQuery = { chartStock: Array<{ date: string, close: number }> | null };
 
 export type GetListStockQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -59,6 +59,9 @@ export default function Bloomberg({ stocks }: Props) {
         modules={[Navigation]}
         slidesPerView={3.5}
         breakpoints={{
+          1600: {
+            slidesPerView: 5.5
+          },
           1400: {
             slidesPerView: 3.5
           },

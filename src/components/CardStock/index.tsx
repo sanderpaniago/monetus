@@ -29,7 +29,6 @@ export function CardStock({
       borderRadius={'md'}
       px={5}
       py={'18px'}
-      maxW="300px"
       w="full"
       cursor="pointer"
       boxShadow={variant === 'shadow' ? 'card' : 'none'}
@@ -37,7 +36,14 @@ export function CardStock({
     >
       {btnWishList && btnWishList}
       <Link href={`/${symbol}`} passHref>
-        <Box d="flex" alignItems="center" flex={1} gap={2}>
+        <Box
+          as="a"
+          w={['70%', 'auto']}
+          d="flex"
+          alignItems="center"
+          flex={1}
+          gap={2}
+        >
           <Flex align="center" gap={2}>
             {isLoading ? (
               <Skeleton borderRadius="50%" width={36} height={36} />
@@ -57,17 +63,18 @@ export function CardStock({
               )
             )}
             <Box>
-              <Text fontWeight="medium" lineHeight={1}>
+              <Text fontSize={['sm', 'md']} fontWeight="medium" lineHeight={1}>
                 {symbol}
               </Text>
               <Text
                 fontWeight="regular"
                 color="gray.600"
                 lineHeight={1}
-                maxW={'100px'}
+                maxW={['65px', '100px']}
                 whiteSpace="nowrap"
                 overflow="hidden"
                 textOverflow="ellipsis"
+                fontSize={['sm', 'md']}
               >
                 {companyName}
               </Text>
