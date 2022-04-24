@@ -1,4 +1,4 @@
-import { Box, Flex, VStack, Text } from '@chakra-ui/react'
+import { Box, Flex, VStack, Text, Tooltip } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useWishlist } from 'src/context/Wishlist'
 import { CardStock } from '../CardStock'
@@ -28,15 +28,24 @@ export function Wishlist() {
               symbol={item.symbol}
               variant="shadow"
             />
-
-            <Box
-              as="button"
-              aria-label="delete-item-wishlist"
-              ml={2}
-              onClick={() => removeItemBySymbol(item.symbol)}
+            <Tooltip
+              hasArrow
+              label="Remover dos favoritos"
+              placement="top-start"
+              bg="primary"
+              color="white"
+              borderRadius="md"
+              boxShadow="custom"
             >
-              <Image src="/icons/delete.svg" alt="" width={24} height={24} />
-            </Box>
+              <Box
+                as="button"
+                aria-label="delete-item-wishlist"
+                ml={2}
+                onClick={() => removeItemBySymbol(item.symbol)}
+              >
+                <Image src="/icons/delete.svg" alt="" width={24} height={24} />
+              </Box>
+            </Tooltip>
           </Box>
         ))}
       </VStack>
