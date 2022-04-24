@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql'
 import { api } from 'src/services/api'
 
 type Variables = {
@@ -6,11 +7,10 @@ type Variables = {
 }
 
 export const chartStock = async (_: unknown, { symbol, date }: Variables) => {
-  const { data } = await api.get(`/stock/${symbol}/chart/date/${date}`, {
-    params: {
-      chartInterval: 30
-    }
-  })
-
-  return data.filter((item: any) => typeof item.close === 'number')
+  try {
+    const { data } = await api.get(`/stock/${symbol}/chart/dynamic`)
+    return data.data
+  } catch (e) {
+    return new GraphQLError('Error fetching chart data')
+  }
 }

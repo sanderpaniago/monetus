@@ -8,11 +8,7 @@ export const query = gql`
   query ChartStock($symbol: String!, $date: String!) {
     chartStock(symbol: $symbol, date: $date) {
       date
-      minute
-      label
       close
-      average
-      marketClose
     }
   }
 `

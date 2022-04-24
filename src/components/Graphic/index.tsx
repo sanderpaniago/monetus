@@ -29,7 +29,7 @@ type Props = {
 export default function Graphic({ stock, initialData }: Props) {
   const { data, isLoading } = useChartStock(stock, initialData)
   const { data: dataStock, isLoading: stockLoading } = useStockBySymbol(stock)
-  const categories = data?.map(item => item.minute)
+  const categories = data?.map(item => item.date)
   const series = data?.map(item => item.close)
 
   if (isLoading) {
@@ -104,6 +104,7 @@ export default function Graphic({ stock, initialData }: Props) {
       </Box>
 
       <Chart
+        id="area-datetime"
         type="area"
         height={300}
         options={{
@@ -124,6 +125,20 @@ export default function Graphic({ stock, initialData }: Props) {
           },
           dataLabels: {
             enabled: false
+          },
+          markers: {
+            size: 4,
+            colors: '#0047BB',
+            strokeColors: '#0047BB',
+            strokeWidth: 0,
+            strokeOpacity: 0.9,
+            strokeDashArray: 0,
+            fillOpacity: 1,
+            shape: 'circle',
+            hover: {
+              size: undefined,
+              sizeOffset: 3
+            }
           },
           tooltip: {
             theme: 'dark',
@@ -161,6 +176,7 @@ export default function Graphic({ stock, initialData }: Props) {
             }
           },
           xaxis: {
+            type: 'datetime',
             axisBorder: {
               color: '#0047BB'
             },

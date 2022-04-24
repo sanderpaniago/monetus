@@ -26,8 +26,6 @@ class DocumentConfig extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
-          <link rel="shortcut icon" href="/logo.svg" type="image/svg" />
-
           <meta name="description" content="Monetus Dashboard Stocks" />
 
           <link rel="shortcut icon" href="/favicon.png" type="image/x-png" />
