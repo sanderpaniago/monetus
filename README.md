@@ -1,11 +1,10 @@
 # Nasdaq-dash [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers) [![GitHub issues](https://img.shields.io/github/issues/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/issues) [![GitHub stars](https://img.shields.io/github/stars/sanderpaniago/nasdaq-dash)](https://github.com/sanderpaniago/nasdaq-dash/stargazers)
 
-![image](https://user-images.githubusercontent.com/52095222/164945501-d9fe3f4c-a149-4942-aa66-ec68ba5cdae1.png)
-
+![image](https://user-images.githubusercontent.com/52095222/164996695-82bce061-aa6a-4ef6-ad20-a22e2c534c5d.png)
 
 ## 🔬 Tecnologias
 
-Saindo um pouco do quotidiano foi utilizado um servidor graphql lambda utilizando a ferramenta Envelop juntamente com o React Query para possibilitar o maior controle dos dados e não depender de um Back-end graphl, com essa estratégia é possível montar um servidor Graphql totalmente customizado.
+Saindo um pouco do quotidiano foi utilizado um servidor graphql lambda utilizando a ferramenta Envelop juntamente com o React Query para possibilitar o maior controle dos dados e não depender de um Back-end graphql, com essa estratégia é possível montar um servidor Graphql totalmente customizado.
 
 **Esse projeto foi desenvolvido com:**
 
@@ -13,7 +12,7 @@ Saindo um pouco do quotidiano foi utilizado um servidor graphql lambda utilizand
 - Typescript
 - Chakra-ui
 - [React Query](https://react-query.tanstack.com/)
-- [Grpahql Envelop](https://www.envelop.dev/)
+- [Graphql Envelop](https://www.envelop.dev/)
 
 ## 💻 Projeto
 Uma Dashboard para facilitar a visualização das principais ações da NASDAQ
