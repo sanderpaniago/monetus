@@ -13,8 +13,9 @@ export type Scalars = {
 };
 
 export type Chart = {
-  close: Scalars['Float'];
+  close: Maybe<Scalars['Float']>;
   date: Scalars['String'];
+  label: Scalars['String'];
 };
 
 export type Logo = {
@@ -56,7 +57,7 @@ export type ChartStockQueryVariables = Exact<{
 }>;
 
 
-export type ChartStockQuery = { chartStock: Array<{ date: string, close: number }> | null };
+export type ChartStockQuery = { chartStock: Array<{ date: string, close: number | null, label: string }> | null };
 
 export type GetListStockQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -9,6 +9,7 @@ export const query = gql`
     chartStock(symbol: $symbol) {
       date
       close
+      label
     }
   }
 `

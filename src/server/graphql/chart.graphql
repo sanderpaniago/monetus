@@ -1,4 +1,5 @@
 type Chart {
   date: String!
-  close: Float!
+  close: Float
+  label: String!
 }

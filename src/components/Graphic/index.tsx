@@ -29,7 +29,7 @@ type Props = {
 export default function Graphic({ stock, initialData }: Props) {
   const { data, isLoading } = useChartStock(stock, initialData)
   const { data: dataStock, isLoading: stockLoading } = useStockBySymbol(stock)
-  const categories = data?.map(item => item.date)
+  const categories = data?.map(item => item.label)
   const series = data?.map(item => item.close)
 
   if (isLoading) {
@@ -176,7 +176,6 @@ export default function Graphic({ stock, initialData }: Props) {
             }
           },
           xaxis: {
-            type: 'datetime',
             axisBorder: {
               color: '#0047BB'
             },
