@@ -13,6 +13,16 @@ export const chartStock = async (_: unknown, { symbol }: Variables) => {
       }
     })
 
+    console.log(data.data)
+
+    if (data.range === '1m') {
+      return data.data.map(({ date, close }: any) => ({
+        date,
+        close,
+        label: new Date(date).toLocaleDateString()
+      }))
+    }
+
     return data.data.filter(({ close }: any) => close !== null)
   } catch (e) {
     return new GraphQLError('Error fetching chart data')
