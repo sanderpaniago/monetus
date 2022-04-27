@@ -22,11 +22,19 @@ export type Logo = {
   url: Scalars['String'];
 };
 
+export type NewsItem = {
+  datetime: Maybe<Scalars['Int']>;
+  headline: Maybe<Scalars['String']>;
+  image: Maybe<Scalars['String']>;
+  summary: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   chartStock: Maybe<Array<Chart>>;
   getListStock: Array<Stock>;
   getLogoStock: Logo;
   getStockBySymbol: Maybe<Stock>;
+  news: Maybe<Array<NewsItem>>;
 };
 
 
@@ -41,6 +49,11 @@ export type QueryGetLogoStockArgs = {
 
 
 export type QueryGetStockBySymbolArgs = {
+  symbol: Scalars['String'];
+};
+
+
+export type QueryNewsArgs = {
   symbol: Scalars['String'];
 };
 
@@ -70,6 +83,13 @@ export type GetLogoStockQueryVariables = Exact<{
 
 
 export type GetLogoStockQuery = { getLogoStock: { url: string } };
+
+export type GetNewStockQueryVariables = Exact<{
+  symbol: Scalars['String'];
+}>;
+
+
+export type GetNewStockQuery = { news: Array<{ datetime: number | null, headline: string | null, image: string | null, summary: string | null }> | null };
 
 export type GetStockBySymbolQueryVariables = Exact<{
   symbol: Scalars['String'];

@@ -5,6 +5,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import Layout from 'src/components/Layout'
+import News from 'src/components/News'
 import { SearchStock } from 'src/components/SearchStock'
 import { TitlePage } from 'src/components/TitlePage'
 import { getChartStock } from 'src/hooks/useChartStock'
@@ -39,6 +40,7 @@ const Home = ({ stocksList, chartData }: Props) => {
       <Graphic initialData={chartData} stock={data?.[0].symbol ?? ''} />
 
       <Bloomberg stocks={data} />
+      <News />
     </>
   )
 }

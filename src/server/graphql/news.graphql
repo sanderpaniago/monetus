@@ -1,0 +1,6 @@
+type NewsItem {
+  datetime: Float
+  image: String
+  summary: String
+  headline: String
+}

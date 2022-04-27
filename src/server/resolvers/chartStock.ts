@@ -13,8 +13,6 @@ export const chartStock = async (_: unknown, { symbol }: Variables) => {
       }
     })
 
-    console.log(data.data)
-
     if (data.range === '1m') {
       return data.data.map(({ date, close }: any) => ({
         date,

@@ -15,6 +15,7 @@ import { getListStock } from './resolvers/getListStock'
 import { getLogoStock } from './resolvers/getLogoStock'
 import { getStockBySymbol } from './resolvers/getStockBySymbol'
 import { chartStock } from './resolvers/chartStock'
+import { news } from './resolvers/news'
 
 const persistedQueries = new Map(Object.entries(persisted))
 
@@ -24,7 +25,8 @@ const apiSchema = makeExecutableSchema({
       getListStock,
       getLogoStock,
       getStockBySymbol,
-      chartStock
+      chartStock,
+      news
     }
   },
   typeDefs: typeDefs
