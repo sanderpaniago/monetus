@@ -40,7 +40,7 @@ const Home = ({ stocksList, chartData }: Props) => {
       <Graphic initialData={chartData} stock={data?.[0].symbol ?? ''} />
 
       <Bloomberg stocks={data} />
-      <News />
+      <News symbol={data?.[0].symbol ?? ''} />
     </>
   )
 }

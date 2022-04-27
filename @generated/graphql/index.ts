@@ -23,9 +23,9 @@ export type Logo = {
 };
 
 export type NewsItem = {
-  datetime: Maybe<Scalars['Int']>;
+  datetime: Scalars['Float'];
   headline: Maybe<Scalars['String']>;
-  image: Maybe<Scalars['String']>;
+  image: Scalars['String'];
   summary: Maybe<Scalars['String']>;
 };
 
@@ -89,7 +89,7 @@ export type GetNewStockQueryVariables = Exact<{
 }>;
 
 
-export type GetNewStockQuery = { news: Array<{ datetime: number | null, headline: string | null, image: string | null, summary: string | null }> | null };
+export type GetNewStockQuery = { news: Array<{ datetime: number, headline: string | null, image: string, summary: string | null }> | null };
 
 export type GetStockBySymbolQueryVariables = Exact<{
   symbol: Scalars['String'];

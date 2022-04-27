@@ -3,8 +3,12 @@ import Image from 'next/image'
 import { useNewsStock } from 'src/hooks/useNewsStock'
 import { SliderLayout } from '../SliderLayout'
 
-export default function News() {
-  const { data } = useNewsStock('aapl')
+type Props = {
+  symbol: string
+}
+
+export default function News({ symbol }: Props) {
+  const { data } = useNewsStock(symbol)
 
   return (
     <SliderLayout
@@ -32,7 +36,7 @@ export default function News() {
           >
             <Image
               src={item.image}
-              alt={item.headline}
+              alt={item.headline ?? 'news'}
               width={36}
               height={36}
               style={{ borderRadius: '50%' }}
